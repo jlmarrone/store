@@ -60,3 +60,9 @@ group :test do
   gem "shoulda-matchers"
   gem "factory_girl_rails"
 end
+
+gem 'heroku'
+
+group :production do
+  gem 'pg'
+end
