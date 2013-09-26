@@ -68,3 +68,6 @@ gem 'heroku'
 group :production do
   gem 'pg'
 end
+
+gem "paperclip", "~> 3.5.1"
+gem 'aws-sdk'
