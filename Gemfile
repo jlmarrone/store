@@ -71,3 +71,5 @@ end
 
 gem "paperclip", "~> 3.5.1"
 gem 'aws-sdk'
+gem "will_paginate", "~> 3.0.5"
+gem "will_paginate-bootstrap", "~> 0.2.5"
