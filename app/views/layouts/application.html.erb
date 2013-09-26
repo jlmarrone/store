@@ -25,9 +25,10 @@
         <div class="nav-collapse">
           <ul class="nav">
             <li><%= link_to "Browse Products", products_path %></li>
-            <li><%= link_to "Price List" %></li>
-            <li><%= link_to "Contact Us" %></li>
-            <li><%= link_to "Cart" %></li>
+            <!-- <li><%= link_to "Price List" %></li> -->
+            <li><%= mail_to "jlmarrone@gmail.com", "Contact Us",
+              :subject => "Joseph's Store Support" %></li>
+            <!-- <li><%= link_to "Cart" %></li> -->
             <% if user_signed_in? %>
               <li><%= link_to('Logout', destroy_user_session_url ) %></li>
             <% else %>
