@@ -18,3 +18,5 @@ db/schema.rb
 config/rails_best_practices.yml
 rails_best_practices_output.html
 Gemfile.lock
+# Ignore application configuration
+/config/application.yml

@@ -73,3 +73,12 @@ gem "paperclip", "~> 3.5.1"
 gem 'aws-sdk'
 gem "will_paginate", "~> 3.0.5"
 gem "will_paginate-bootstrap", "~> 0.2.5"
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
+
+gem 'sidekiq'
+gem "figaro"
