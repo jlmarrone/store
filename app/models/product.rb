@@ -5,4 +5,11 @@ class Product < ActiveRecord::Base
 
   has_attached_file :avatar,
   :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  after_save :send_notification_email
+
+private
+	def send_notification_email
+		puts "entra a send_notification_email!"
+		ProductWorker.perform_async(id)
+	end
 end
