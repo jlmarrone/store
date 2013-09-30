@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ProductsController do
-	  let(:valid_attributes) { { "name" => "MyString", "price" => 10} }
+	  let(:valid_attributes) { { "name" => "MyString", "price" => 10, "avatar" => Rack::Test::UploadedFile.new('public/rails.png', 'image/jpeg') } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

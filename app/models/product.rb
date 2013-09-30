@@ -9,7 +9,6 @@ class Product < ActiveRecord::Base
 
 private
 	def send_notification_email
-		puts "entra a send_notification_email!"
 		ProductWorker.perform_async(id)
 	end
 end
