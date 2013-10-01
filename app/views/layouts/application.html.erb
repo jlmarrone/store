@@ -30,7 +30,7 @@
               :subject => "Joseph's Store Support" %></li>
             <!-- <li><%= link_to "Cart" %></li> -->
             <% if user_signed_in? %>
-              <li><%= link_to('Edit ' + current_user.username + 'Profile', edit_user_registration_url) %></li>
+              <!-- <li><%= link_to('Edit ' + current_user.username + ' Profile', edit_user_registration_url) %></li> -->
               <li><%= link_to('Logout', destroy_user_session_url ) %></li>
             <% else %>
               <li><%= link_to('Login', new_user_session_url)  %></li>
