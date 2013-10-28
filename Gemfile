@@ -82,3 +82,5 @@ end
 
 gem 'sidekiq'
 gem "figaro"
+gem 'slim'
+gem 'slim-rails'

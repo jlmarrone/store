@@ -1,0 +1,7 @@
+div.secondary-navigation
+  ul.wat-cf
+    li.first
+      div.section = controller.controller_name.titleize
+    = raw link_to_collection
+    - if controller.respond_to?(:new)
+      = raw link_to_new_resource 

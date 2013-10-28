@@ -1,0 +1,15 @@
+div.block
+  = render "admin/core/navigation"
+
+  div.content
+
+    div.inner
+      table.table.table_main
+        thead
+          tr
+            = render "header"
+            th.last &nbsp;
+
+        = render collection
+      - if controller_name == 'users'
+          p= user_count

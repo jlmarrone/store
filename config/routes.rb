@@ -1,6 +1,13 @@
 Store::Application.routes.draw do
   devise_for :users
+  devise_for :admins, :path => :admin, :controllers => { :sessions => "admin/users/sessions" } do
+    get "/admin/sign_out" => "admin/users/sessions#destroy", :as => :destroy_admin_session
+  end
+
   resources :products
+  namespace :admin do
+    resources :products
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
