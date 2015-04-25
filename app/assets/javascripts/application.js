@@ -12,6 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
+//= require bootstrap-datepicker
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $("#birthdateDatePicker").datepicker();
+  $("#paymentdateDatePicker").datepicker();
+});
+
+function initAutoComplete(keys) {
+  $("#search-input").autocomplete({
+    source: keys
+  });
+};
+
+function closeAutoComplete() {
+  $(".ui-autocomplete").hide();
+};
+

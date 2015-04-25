@@ -4,7 +4,8 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = params.try(:[], :search).present? ? Client.search(params[:search]) : Client.all
+    @clients = (params.try(:[], :expired_subscription).present? ? @clients.select{ |client| client.paymentdate.next_month < Date.today } : @clients)
   end
 
   # GET /clients/1
@@ -28,7 +29,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to @client, notice: 'El cliente fue inscripto exitosamente.' }
         format.json { render action: 'show', status: :created, location: @client }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to @client, notice: 'Se actualizaron los datos del cliente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

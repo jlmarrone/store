@@ -1,19 +1,30 @@
 <%- model_class = Client -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => 'Socios' %></h1>
 </div>
+
+<div class="page-search">
+  <p><strong>Ingresar nombre o apellido para buscar el socio </strong></p>
+  <%= form_tag clients_path, :method => 'get', class: 'search-form' do %>
+    <p>
+      <%= hidden_field_tag :expired_subscription, params[:expired_subscription] %>
+      <%= text_field_tag :search, params[:search], id: 'search-input', class: 'search-input' %>
+      <%= submit_tag "Buscar", :name => nil, class: 'btn search-submit' %>
+    </p>
+  <% end %>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:first_name) %></th>
-      <th><%= model_class.human_attribute_name(:last_name) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:birthdate) %></th>
-      <th><%= model_class.human_attribute_name(:paymentdate) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= 'Nombre' %></th>
+      <th><%= 'Apellido' %></th>
+      <th><%= 'Telefono' %></th>
+      <th><%= 'Email' %></th>
+      <th><%= 'Direccion' %></th>
+      <th><%= 'Fecha de Nacimiento' %></th>
+      <th><%= 'Fecha de Pago' %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -28,21 +39,24 @@
         <td><%= client.address %></td>
         <td><%= client.birthdate %></td>
         <td><%= client.paymentdate %></td>
-        <td><%=l client.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_client_path(client), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      client_path(client),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <% if current_user.present? %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_client_path(client), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        client_path(client),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<% if current_user.present? %>
+  <%= link_to t('.new', :default => 'Nuevo Socio'),
             new_client_path,
             :class => 'btn btn-primary' %>
+<% end %>

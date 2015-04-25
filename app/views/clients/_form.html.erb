@@ -1,49 +1,49 @@
 <%= form_for @client, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :first_name, :class => 'control-label' %>
+    <%= f.label :first_name, 'Nombre', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :first_name, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :last_name, :class => 'control-label' %>
+    <%= f.label :last_name, 'Apellido', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :last_name, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :phone, :class => 'control-label' %>
+    <%= f.label :phone, 'Telefono', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
+    <%= f.label :email, 'Email', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :address, :class => 'control-label' %>
+    <%= f.label :address, 'Direccion', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :address, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :birthdate, :class => 'control-label' %>
+    <%= f.label :birthdate, 'Fecha de Nacimiento', :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :birthdate, :class => 'text_field' %>
+      <%= f.text_field :birthdate, id: 'birthdateDatePicker', class: 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :paymentdate, :class => 'control-label' %>
+    <%= f.label :paymentdate, 'Fecha de Pago', :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :paymentdate, :class => 'text_field' %>
+      <%= f.text_field :paymentdate, id: 'paymentdateDatePicker', class: 'text_field' %>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit @client.new_record? ? 'Inscribir' : 'Guardar' , :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 clients_path, :class => 'btn' %>
   </div>
