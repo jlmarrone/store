@@ -1,6 +1,10 @@
 <%- model_class = Client -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => 'Socios' %></h1>
+  <% if params.try(:[], :expired_subscription).present? %>
+    <h1><%=t '.title', :default => 'Socios con Cuotas Vencidas' %></h1>
+  <% else %>
+    <h1><%=t '.title', :default => 'Socios' %></h1>
+  <% end %>
 </div>
 
 <div class="page-search">

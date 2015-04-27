@@ -1,6 +1,6 @@
 require 'valid_formats'
 class Client < ActiveRecord::Base
-  validates :first_name, :last_name, :phone, :birthdate, :address, presence: true
+  validates :first_name, :last_name, :phone, :birthdate, :paymentdate, :address, presence: true
   validates :email, presence: true,
                     format: { with: ValidFormats::EMAIL,
                               message: 'Este email no tiene el formato valido' }

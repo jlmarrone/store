@@ -19,8 +19,12 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $("#birthdateDatePicker").datepicker();
-  $("#paymentdateDatePicker").datepicker();
+  $("#birthdateDatePicker").datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+  $("#paymentdateDatePicker").datepicker({
+    dateFormat: "yy-mm-dd"
+  });
 });
 
 function initAutoComplete(keys) {
@@ -32,4 +36,3 @@ function initAutoComplete(keys) {
 function closeAutoComplete() {
   $(".ui-autocomplete").hide();
 };
-
