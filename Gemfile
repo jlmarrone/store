@@ -82,3 +82,5 @@ end
 
 gem 'sidekiq'
 gem "figaro"
+
+gem 'rails_12factor', group: :production
