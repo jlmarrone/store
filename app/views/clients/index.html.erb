@@ -18,7 +18,7 @@
   <% end %>
 </div>
 
-<table class="table table-striped">
+<table class="table table-condensed table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -29,6 +29,7 @@
       <th><%= 'Direccion' %></th>
       <th><%= 'Fecha de Nacimiento' %></th>
       <th><%= 'Fecha de Pago' %></th>
+      <th><%= 'Cuota vence en:' %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -43,6 +44,7 @@
         <td><%= client.address %></td>
         <td><%= client.birthdate %></td>
         <td><%= client.paymentdate %></td>
+        <td><%= client.subscription_expired? ? "La Cuota está vencida" : show_remaining_time(client.paymentdate)%></td>
         <td>
           <% if current_user.present? %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),

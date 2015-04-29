@@ -13,8 +13,8 @@ class Client < ActiveRecord::Base
     all.map{ |client| client.full_name }
   end
 
-  def with_expired_payment_date
-    select{ |client| client.paymentdate.next_month < Date.today }
+  def self.with_expired_payment_date
+    all.select{ |client| client.paymentdate.next_month < Date.today.next_month }
   end
 
   def self.search(search)
@@ -23,5 +23,9 @@ class Client < ActiveRecord::Base
     else
       find(:all)
     end
+  end
+
+  def subscription_expired?
+    Client.with_expired_payment_date.include?(self)
   end
 end

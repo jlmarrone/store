@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = params.try(:[], :search).present? ? Client.search(params[:search]) : Client.all
-    @clients = (params.try(:[], :expired_subscription).present? ? @clients.select{ |client| client.paymentdate.next_month < Date.today } : @clients)
+    @clients = (params.try(:[], :expired_subscription).present? ? @clients.select{ |client| client.paymentdate.next_month < Date.today.next_month } : @clients)
   end
 
   # GET /clients/1
