@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
   def index
     @clients = params.try(:[], :search).present? ? Client.search(params[:search]) : Client.all
     @clients = (params.try(:[], :expired_subscription).present? ? @clients.select{ |client| client.paymentdate.next_month < Date.today.next_month } : @clients)
+    @clients = @clients.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /clients/1
