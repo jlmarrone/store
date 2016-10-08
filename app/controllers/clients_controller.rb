@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
