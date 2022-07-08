@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - "refactoring"
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ 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 }}
+          source_ref: ${{ refactoring }}
+          target_branch: 'master'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
